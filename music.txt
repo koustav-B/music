@@ -1,0 +1,46 @@
+This Python script is a simple text-based music player that allows you to play music files from a specified directory. It incorporates features such as repeat mode, random playback, and basic user controls. Let's break down the code step by step:
+
+Importing Necessary Libraries:
+
+os: Used for directory and file operations.
+random: Used for shuffling the music files for random playback.
+pygame: A popular library for handling audio playback.
+list_music_files(music_folder) Function:
+
+This function takes a directory path (music_folder) as an argument.
+It uses the os.listdir() function to list all files in the directory.
+It filters the files to include only those with ".mp3" or ".wav" extensions.
+Returns a list of music files in the folder.
+print_song_info(music_file) Function:
+
+This function takes a music file's path (music_file) as an argument.
+It attempts to use the eyed3 library to extract artist and title information from the music file.
+If the eyed3 library is not available, it returns the basename (filename) of the music file.
+play_music(music_folder, repeat_mode=False, random_playback=False) Function:
+
+This function is the main part of the music player.
+It accepts the music_folder as the directory path and two optional boolean flags: repeat_mode and random_playback.
+It initializes the pygame mixer for audio playback and sets the initial volume to 0.5 (50%).
+The function enters a loop to play music tracks.
+Loop for Playing Music:
+
+Inside the loop, it checks if there are no more music files in the playlist, and if repeat_mode is enabled, it reloads the music files.
+If random_playback is enabled, it shuffles the music files to play them randomly.
+It selects the next music file, loads it, and starts playing.
+While the music is playing, the user is prompted to enter various commands:
+'p' to pause the music.
+'r' to resume the music.
+'v' to change the volume.
+'n' to skip to the next track.
+'q' to quit the player.
+Handling User Input:
+
+Depending on the user's input, the script pauses, resumes, changes the volume, loads the next track, or quits the player.
+If the user quits, the pygame mixer is stopped, and the script exits.
+Main Section (if __name__ == '__main__':):
+
+This section is the entry point of the script.
+It prompts the user to enter the directory containing music files.
+It also asks if the user wants to enable repeat mode and random playback.
+Then, it calls the play_music function with the provided options.
+This script provides a basic command-line music player with some interactive control options. Users can specify a music folder, enable repeat mode, and choose to play music tracks randomly or in order. The user can control playback using the provided commands during playback.
